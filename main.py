@@ -8,8 +8,8 @@ def index():
     return 'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n'
 
 
-@app.route('/mul')
-def multiplication():
+@app.route('/div')
+def division():
     try:
         value1=request.args.get('A',default = 0, type = Fraction)
     except ZeroDivisionError as error:
@@ -23,8 +23,11 @@ def multiplication():
     else:
         C = Fraction(value1)
         D = Fraction(value2)
-        result = C*D
-        return str(float(result))
+        try:
+            result = C/D
+            return str(float(result))
+        except ZeroDivisionError as error:
+            return 'None'
 
 
 if __name__ == "__main__":
