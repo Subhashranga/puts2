@@ -17,25 +17,19 @@ class TestCalculator(unittest.TestCase):
 
 		#case 2, A is rational number and B is rational number p/q form
 		solution = self.app.get('/add?A=5/2&B=1/2')
-		self.assertEqual(b'5.0', solution.data)
+		self.assertEqual(b'3.0', solution.data)
 
 	def test_add3(self):
 
 		#case 3, A is a float and B is a float
 		solution = self.app.get('/add?A=102.22&B=1.002')
-		self.assertEqual(b'123.222', solution.data)
+		self.assertEqual(b'103.222', solution.data)
 
 	def test_add4(self):
 
 		#case 4, when A is float and B is integer
 		solution = self.app.get('/add?A=22.222&B=98')
-		self.assertEqual(b'103.222', solution.data)
-
-	def test_add5(self):
-
-		#case 5, when A is integer and B is float
-		solution = self.app.get('/add?A=11&B=98.9')
-		self.assertEqual(b'109.9', solution.data)
+		self.assertEqual(b'120.222', solution.data)
 
 	def test_add6(self):
 
